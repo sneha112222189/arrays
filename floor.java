@@ -3,18 +3,18 @@ import java.util.*;
 class Main {
 
     static int floor(int[] arr,int low,int high,int target){
-            while(low<high){
+            while(low<=high){
             int mid = (low+(high-low))/2;
             if(arr[mid]==target)
-                return arr[mid];
+                return mid;
             else if(arr[mid]<target){
                 return floor(arr,mid+1,high,target);
             }
             else{
-                return floor(arr,low,mid,target);
+                return floor(arr,low,mid-1,target);
             }
         }
-        return arr[high];
+        return high;
         }
     
 

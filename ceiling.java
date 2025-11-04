@@ -1,27 +1,31 @@
 import java.util.*;
 
 class Main {
-    static int binarySearch(int[] arr,int low,int high,int target){
-            while(low<high){
-            int mid = (low+(high-low))/2;
-            if(arr[mid]==target)
-                return arr[mid];
-            else if(arr[mid]<target){
-                return binarySearch(arr,mid+1,high,target);
-            }
-            else{
-                return binarySearch(arr,low,mid,target);
-            }
-        }
-        return arr[low];
-        }
-    
-
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int[] arr={10,20,30,40,50};
         System.out.println("enter the target element: ");
         int target = sc.nextInt();
-        System.out.println(binarySearch(arr,0,arr.length-1,target));
+        int ans = binarySearch(arr,target);
+        System.out.println(ans);
+    }
+
+    static int binarySearch(int[] arr,int target){
+        if(target>arr[arr.length-1]) return -1;
+        int low=0;
+        int high=arr.length-1;
+            while(low<=high){
+            int mid = (low+(high-low))/2;
+            if(target==arr[mid]){
+                return mid;
+            }
+            else if(target>arr[mid]){
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+        }
+        return low;
     }
 }
